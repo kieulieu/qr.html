@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>30 Câu Chúc Yêu Thương</title>
+    <title></title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background-color: #000; /* Đen thuần */
+            background-color: #000;
             color: #fff;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
@@ -92,6 +92,87 @@
             z-index: 10;
         }
 
+        /* Happy Birthday Cards - Giống như các card khác nhưng to hơn */
+        .happy-birthday-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 107, 157, 0.8);
+            border-radius: 15px;
+            padding: 20px 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 107, 157, 0.4);
+            width: auto;
+            min-width: 400px;
+            max-width: 600px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 15;
+        }
+
+        .happy-birthday-text {
+            font-size: 28px;
+            text-align: center;
+            color: #fff;
+            text-shadow: 
+                0 2px 5px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(255, 107, 157, 0.6);
+            font-weight: bold;
+            white-space: nowrap;
+             font-family: 'Comic Sans MS', cursive, sans-serif;
+            letter-spacing: 1px;
+            animation: colorChange 6s ease infinite;
+        }
+
+        /* Animation cho Happy Birthday - Di chuyển như các card khác */
+        .birthday-move-right {
+            animation: birthdayMoveRight 8s linear infinite;
+        }
+
+        @keyframes birthdayMoveRight {
+            0% {
+                transform: translateX(-600px) translateY(0px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(0px);
+                opacity: 0.8;
+            }
+        }
+
+        .birthday-move-left {
+            animation: birthdayMoveLeft 8s linear infinite;
+        }
+
+        @keyframes birthdayMoveLeft {
+            0% {
+                transform: translateX(100vw) translateY(0px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-600px) translateY(0px);
+                opacity: 0.8;
+            }
+        }
+
+        .birthday-move-down {
+            animation: birthdayMoveDown 8s linear infinite;
+        }
+
+        @keyframes birthdayMoveDown {
+            0% {
+                transform: translateY(-100px) translateX(0px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0.8;
+            }
+        }
+
         .wishes-container {
             position: relative;
             width: 100%;
@@ -125,9 +206,23 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            animation: colorChange 6s ease infinite;
         }
 
-        /* Animation từ trên xuống */
+        @keyframes colorChange {
+            0% {
+                color: #fff;
+            }
+            50% {
+                color: #ff69b4;
+            }
+            100% {
+                color: #fff;
+            }
+        }
+        
+
+        /* Animations */
         .move-down {
             animation: moveDown 8s linear infinite;
         }
@@ -143,7 +238,6 @@
             }
         }
 
-        /* Animation từ trái sang phải */
         .move-right {
             animation: moveRight 10s linear infinite;
         }
@@ -159,7 +253,6 @@
             }
         }
 
-        /* Animation từ phải sang trái */
         .move-left {
             animation: moveLeft 10s linear infinite;
         }
@@ -175,9 +268,8 @@
             }
         }
 
-        /* Animation chéo từ trái trên xuống phải dưới */
         .move-diagonal-1 {
-            animation: moveDiagonal1 12s linear infinite;
+            animation: moveDiagonal1 5s linear infinite;
         }
 
         @keyframes moveDiagonal1 {
@@ -191,9 +283,8 @@
             }
         }
 
-        /* Animation chéo từ phải trên xuống trái dưới */
         .move-diagonal-2 {
-            animation: moveDiagonal2 12s linear infinite;
+            animation: moveDiagonal2 5s linear infinite;
         }
 
         @keyframes moveDiagonal2 {
@@ -223,6 +314,18 @@
             .wish-text {
                 font-size: 11px;
             }
+            
+            .happy-birthday-card {
+                min-width: 300px;
+                max-width: 450px;
+                height: 70px;
+                padding: 15px 25px;
+            }
+            
+            .happy-birthday-text {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -241,6 +344,18 @@
             .wish-text {
                 font-size: 10px;
             }
+            
+            .happy-birthday-card {
+                min-width: 250px;
+                max-width: 350px;
+                height: 60px;
+                padding: 12px 20px;
+            }
+            
+            .happy-birthday-text {
+                font-size: 16px;
+                letter-spacing: 1px;
+            }
         }
     </style>
 </head>
@@ -249,7 +364,7 @@
     <div class="glitter"></div>
 
     <div class="hearts-bg" id="heartsBackground"></div>
-    
+
     
     
     <div class="wishes-container" id="wishesContainer">
@@ -258,36 +373,102 @@
 
     <script>
         const wishes = [
-            "Chúc bạn luôn hạnh phúc và tràn đầy yêu thương",
-            "Mong bạn có một ngày tuyệt vời nhất",
-            "Chúc bạn thành công trong mọi việc làm",
-            "Hy vọng nụ cười luôn nở trên môi bạn",
-            "Chúc bạn sức khỏe dồi dào, tinh thần sảng khoái",
-            "Mong mọi điều tốt lành đến với bạn",
-            "Chúc bạn luôn được bao quanh bởi những người yêu thương",
-            "Hy vọng những ước mơ của bạn sẽ trở thành hiện thực",
-            "Chúc bạn có thêm nhiều kỷ niệm đẹp trong cuộc sống",
-            "Mong bạn luôn giữ vững niềm tin và nghị lực",
-            "Chúc bạn một tương lai tươi sáng và rực rỡ",
-            "Hy vọng bạn luôn bình an và mạnh khỏe",
-            "Chúc bạn có nhiều trải nghiệm thú vị mỗi ngày",
-            "Mong mọi khó khăn đều biến thành cơ hội",
-            "Chúc bạn tìm thấy niềm vui trong từng khoảnh khắc",
-            "Hy vọng tình yêu và hạnh phúc luôn bên bạn",
-            "Chúc bạn luôn giữ được sự lạc quan và yêu đời",
-            "Mong bạn được che chở và bảo vệ suốt đời",
-            "Chúc bạn luôn tiến bước trên con đường thành công",
-            "Hy vọng mỗi ngày trôi qua đều là một ngày hạnh phúc",
-            "Chúc bạn sự nghiệp phát triển, cuộc sống viên mãn",
-            "Mong bạn luôn gặp được những điều may mắn bất ngờ",
-            "Chúc bạn sức khỏe để thực hiện mọi dự định",
-            "Hy vọng bạn luôn có người thân yêu bên cạnh",
-            "Chúc bạn có thật nhiều niềm vui và tiếng cười",
-            "Mong bạn được yêu thương và trân trọng mỗi ngày",
-            "Chúc bạn có sức mạnh vượt qua mọi thử thách",
-            "Hy vọng bạn luôn tìm thấy ý nghĩa cuộc sống",
-            "Chúc bạn hạnh phúc viên mãn bên người thân yêu",
-            "Mong bạn luôn giữ được trái tim trong sáng và ấm áp"
+            "Chúc anh tất cả trừ vất vả♡",
+            "01/06/2002🤍",
+            "Chúc anh thành công trong mọi việc làm🤍",
+            "Hy vọng chúc mình sẽ có cái kết đẹp 💒🤍",
+            "Anh là nhất️🏅 ",
+            "Mong mọi điều tốt lành đến với anh🤍",
+            "Thêm tuổi thêm thành công anh nhé💪",
+            "Hy vọng những ước mơ của anh sẽ trở thành hiện thực🎂🙆",
+            "01/06/2002🎂",
+            "Không phải chỉ hôm nay mới hạnh phúc, những ngày còn lại đều như vậy nhé anh💑",
+             "01/06/2002🤍",
+            "Hy vọng anh luôn bình an và mạnh khỏe💑🚶",
+            "Cảm ơn anh vì đã đến❤️",
+            "Nhắn gửi tới trời xanh mong suốt kiếp này luôn được anh cưng chiều❤️😘",
+            "01/06/2002🎂",
+            "Chỉ mong đến sau cùng anh vẫn vì em mà ở lại💋",
+            "Món quà này không hề đắt nhưng nó có tình cảm của em ở đó 💋💏",
+            "Hạnh phúc có nhiều dạng và anh là dạng đầu tiên💋💏🤵",
+            "01/06/2002❣️",
+            "Chúc anh luôn tiến bước trên con đường thành công❣️",
+            "Hy vọng mỗi ngày trôi qua đều là một ngày hạnh phúc❣️👣",
+            "Trong túi có tiền, trong tay có sự nghiệp, trong lòng có em .❣️👣",
+            "Mãi yêu ! Mãi yêu💑 ",
+            "x100000000000000 yêu thương dành cho anh ở đây 💑🌻",
+            "Hy vọng những lúc mệt anh luôn nhìn về phía sau, vì phía sau luôn có em 💑🌻",
+           "01/06/2002🎂",
+            "+1 máy yêu thật lòng🎀",
+            "Em có hơi tồi 1 chúc . Nhưng 1 chút đó không đáng kể🎀🌝",
+            "Chúc anh tuổi 24 luôn rực rỡ 🎀",
+            "01/06/2002❣️",
+            " Chúc anh 8386 . Mãi đỉnh mãi đỉnh ❣️",
+            " Anh biết gì chưa, em bí content gòi 🎀🥂 ",
+            " Nói chung quá là yêu gòi 🎀🥂🌹",
+            "01/06/2002❣️",
+            "Cứ mãi như vậy nhé🎀🥂🌹",
+            "Chúc anh tất cả trừ vất vả♡",
+            "01/06/2002🤍",
+            "Chúc anh thành công trong mọi việc làm🤍",
+            "Hy vọng chúc mình sẽ có cái kết đẹp 💒🤍",
+            "Anh là nhất️🏅 ",
+            "Mong mọi điều tốt lành đến với anh🤍",
+            "Thêm tuổi thêm thành công anh nhé💪",
+            "Hy vọng những ước mơ của anh sẽ trở thành hiện thực🎂🙆",
+            "01/06/2002🎂",
+            "Không phải chỉ hôm nay mới hạnh phúc, những ngày còn lại đều như vậy nhé anh💑",
+             "01/06/2002🤍",
+            "Hy vọng anh luôn bình an và mạnh khỏe💑🚶",
+            "Cảm ơn anh vì đã đến❤️",
+            "Nhắn gửi tới trời xanh mong suốt kiếp này luôn được anh cưng chiều❤️😘",
+            "01/06/2002🎂",
+            "Chỉ mong đến sau cùng anh vẫn vì em mà ở lại💋",
+            "Món quà này không hề đắt nhưng nó có tình cảm của em ở đó 💋💏",
+            "Hạnh phúc có nhiều dạng và anh là dạng đầu tiên💋💏🤵",
+            "01/06/2002❣️",
+            "Chúc anh luôn tiến bước trên con đường thành công❣️",
+            "Hy vọng mỗi ngày trôi qua đều là một ngày hạnh phúc❣️👣",
+            "Trong túi có tiền, trong tay có sự nghiệp, trong lòng có em .❣️👣",
+            "Mãi yêu ! Mãi yêu💑 ",
+            "x100000000000000 yêu thương dành cho anh ở đây 💑🌻",
+            "Hy vọng những lúc mệt anh luôn nhìn về phía sau, vì phía sau luôn có em 💑🌻",
+           "01/06/2002🎂",
+            "+1 máy yêu thật lòng🎀",
+            "Em có hơi tồi 1 chúc . Nhưng 1 chút đó không đáng kể🎀🌝",
+            "Chúc anh tuổi 24 luôn rực rỡ 🎀",
+            "01/06/2002❣️",
+            " Chúc anh 8386 . Mãi đỉnh mãi đỉnh ❣️",
+            " Anh biết gì chưa, em bí content gòi 🎀🥂 ",
+            " Nói chung quá là yêu gòi 🎀🥂🌹",
+            "01/06/2002❣️",
+            "Cứ mãi như vậy nhé🎀🥂🌹",
+             "🎉 HAPPY BIRTHDAY 🎉",
+              "🎉 HAPPY BIRTHDAY 🎉",
+            "🎂 HAPPY BIRTHDAY 🎂", 
+            "🎈 HAPPY BIRTHDAY 🎈",
+            "🎁 HAPPY BIRTHDAY 🎁",
+            "🌟 HAPPY BIRTHDAY 🌟",
+            "💖 HAPPY BIRTHDAY 💖",
+            "🎊 HAPPY BIRTHDAY 🎊",
+            "🥳 HAPPY BIRTHDAY 🥳",
+            "🎵 HAPPY BIRTHDAY 🎵",
+            "✨ HAPPY BIRTHDAY ✨",
+            "Happy birthday🎂"
+        ];
+
+        // Happy Birthday messages
+        const happyBirthdayMessages = [
+            "🎉 HAPPY BIRTHDAY 🎉",
+            "🎂 HAPPY BIRTHDAY 🎂", 
+            "🎈 HAPPY BIRTHDAY 🎈",
+            "🎁 HAPPY BIRTHDAY 🎁",
+            "🌟 HAPPY BIRTHDAY 🌟",
+            "💖 HAPPY BIRTHDAY 💖",
+            "🎊 HAPPY BIRTHDAY 🎊",
+            "🥳 HAPPY BIRTHDAY 🥳",
+            "🎵 HAPPY BIRTHDAY 🎵",
+            "✨ HAPPY BIRTHDAY ✨"
         ];
 
         const container = document.getElementById('wishesContainer');
@@ -296,75 +477,171 @@
             return Math.random() * (max - min) + min;
         }
 
-        // Các kiểu animation khác nhau cho tạo sự đa dạng
+        // Các kiểu animation khác nhau
         const animationClasses = [
             'move-down',
-            'move-right',
+            'move-right', 
             'move-left',
             'move-diagonal-1',
             'move-diagonal-2'
         ];
 
-        wishes.forEach((wish, i) => {
+        // Tạo Happy Birthday cards với chuyển động giống các card khác
+        let birthdayIndex = 0;
+        const birthdayAnimations = ['birthday-move-right', 'birthday-move-left', 'birthday-move-down'];
+        
+        function createBirthdayCard() {
             const card = document.createElement('div');
-            card.classList.add('wish-card');
-
-            // Chọn ngẫu nhiên animation class
-            const animClass = animationClasses[i % animationClasses.length];
+            card.classList.add('happy-birthday-card');
+            
+            const animClass = birthdayAnimations[Math.floor(Math.random() * birthdayAnimations.length)];
             card.classList.add(animClass);
-
-            // Random vị trí ban đầu cho từng kiểu animation
+            
+            // Set vị trí ban đầu dựa trên loại animation
             switch(animClass) {
-                case 'move-down':
-                    card.style.left = randomBetween(0, window.innerWidth - 300) + 'px';
-                    card.style.top = '-40px';
-                    card.style.animationDuration = randomBetween(6, 12) + 's';
+                case 'birthday-move-right':
+                    card.style.top = randomBetween(100, window.innerHeight - 150) + 'px';
+                    card.style.left = '-600px';
                     break;
-                case 'move-right':
-                    card.style.top = randomBetween(0, window.innerHeight - 35) + 'px';
-                    card.style.left = '-300px';
-                    card.style.animationDuration = randomBetween(8, 14) + 's';
-                    break;
-                case 'move-left':
-                    card.style.top = randomBetween(0, window.innerHeight - 35) + 'px';
+                case 'birthday-move-left':
+                    card.style.top = randomBetween(100, window.innerHeight - 150) + 'px';
                     card.style.left = window.innerWidth + 'px';
-                    card.style.animationDuration = randomBetween(8, 14) + 's';
                     break;
-                case 'move-diagonal-1':
-                    card.style.left = '-200px';
-                    card.style.top = '-50px';
-                    card.style.animationDuration = randomBetween(10, 15) + 's';
-                    break;
-                case 'move-diagonal-2':
-                    card.style.left = window.innerWidth + 'px';
-                    card.style.top = '-50px';
-                    card.style.animationDuration = randomBetween(10, 15) + 's';
+                case 'birthday-move-down':
+                    card.style.left = randomBetween(0, window.innerWidth - 600) + 'px';
+                    card.style.top = '-100px';
                     break;
             }
 
             const text = document.createElement('div');
-            text.className = 'wish-text';
-            text.textContent = wish;
+            text.className = 'happy-birthday-text';
+            text.textContent = happyBirthdayMessages[birthdayIndex];
             card.appendChild(text);
 
             container.appendChild(card);
+
+            // Xóa card sau khi animation kết thúc
+            setTimeout(() => {
+                if (card.parentNode) {
+                    card.parentNode.removeChild(card);
+                }
+            }, 8000);
+
+            // Chuyển sang message tiếp theo
+            birthdayIndex = (birthdayIndex + 1) % happyBirthdayMessages.length;
+        }
+
+        // Tạo Happy Birthday card đầu tiên ngay lập tức
+        createBirthdayCard();
+
+        // Sau đó tạo card mới mỗi 5 giây
+        setInterval(createBirthdayCard, 3000);
+
+        // Create regular wish cards
+        wishes.forEach((wish, i) => {
+            setTimeout(() => {
+                const card = document.createElement('div');
+                card.classList.add('wish-card');
+
+                const animClass = animationClasses[i % animationClasses.length];
+                card.classList.add(animClass);
+
+                // Set initial position based on animation type
+                switch(animClass) {
+                    case 'move-down':
+                        card.style.left = randomBetween(0, window.innerWidth - 300) + 'px';
+                        card.style.top = '-40px';
+                        card.style.animationDuration = randomBetween(6, 12) + 's';
+                        break;
+                    case 'move-right':
+                        card.style.top = randomBetween(80, window.innerHeight - 80) + 'px';
+                        card.style.left = '-300px';
+                        card.style.animationDuration = randomBetween(8, 14) + 's';
+                        break;
+                    case 'move-left':
+                        card.style.top = randomBetween(80, window.innerHeight - 80) + 'px';
+                        card.style.left = window.innerWidth + 'px';
+                        card.style.animationDuration = randomBetween(8, 14) + 's';
+                        break;
+                    case 'move-diagonal-1':
+                        card.style.left = '-200px';
+                        card.style.top = '-50px';
+                        card.style.animationDuration = randomBetween(10, 15) + 's';
+                        break;
+                    case 'move-diagonal-2':
+                        card.style.left = window.innerWidth + 'px';
+                        card.style.top = '-50px';
+                        card.style.animationDuration = randomBetween(10, 15) + 's';
+                        break;
+                }
+
+                const text = document.createElement('div');
+                text.className = 'wish-text';
+                text.textContent = wish;
+                card.appendChild(text);
+
+                container.appendChild(card);
+            }, i * 200); // Stagger the creation
         });
 
-        // Tạo tim rơi nền
+        // Create falling hearts background
         const heartsContainer = document.getElementById('heartsBackground');
-        const heartCount = 50;
+        const heartCount = 60;
 
-        for(let i=0; i < heartCount; i++) {
+        for(let i = 0; i < heartCount; i++) {
             const heart = document.createElement('div');
             heart.classList.add('falling-heart');
             heart.textContent = '💖';
             heart.style.left = Math.random() * window.innerWidth + 'px';
             heart.style.animationDuration = (5 + Math.random() * 7) + 's';
             heart.style.fontSize = (8 + Math.random() * 12) + 'px';
-            heart.style.opacity = 0.5 + Math.random() * 0.5;
-            heart.style.animationDelay = (Math.random() * 15) + 's';
+            heart.style.opacity = 0.3 + Math.random() * 0.4;
+            heart.style.animationDelay = (Math.random() * 10) + 's';
             heartsContainer.appendChild(heart);
         }
+
+        // Continuously add new wishes
+        setInterval(() => {
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            const card = document.createElement('div');
+            card.classList.add('wish-card');
+            
+            const animClass = animationClasses[Math.floor(Math.random() * animationClasses.length)];
+            card.classList.add(animClass);
+            
+            // Random positioning
+            switch(animClass) {
+                case 'move-down':
+                    card.style.left = randomBetween(0, window.innerWidth - 300) + 'px';
+                    card.style.top = '-40px';
+                    break;
+                case 'move-right':
+                    card.style.top = randomBetween(80, window.innerHeight - 80) + 'px';
+                    card.style.left = '-300px';
+                    break;
+                case 'move-left':
+                    card.style.top = randomBetween(80, window.innerHeight - 80) + 'px';
+                    card.style.left = window.innerWidth + 'px';
+                    break;
+            }
+            
+            card.style.animationDuration = randomBetween(6, 12) + 's';
+            
+            const text = document.createElement('div');
+            text.className = 'wish-text';
+            text.textContent = randomWish;
+            card.appendChild(text);
+            
+            container.appendChild(card);
+            
+            // Remove card after animation
+            setTimeout(() => {
+                if (card.parentNode) {
+                    card.parentNode.removeChild(card);
+                }
+            }, 15000);
+        }, 3000);
+        
     </script>
 </body>
 </html>
